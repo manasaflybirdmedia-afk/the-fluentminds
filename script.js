@@ -1,3 +1,21 @@
+// ===== HERO SLIDESHOW =====
+(function () {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  setInterval(() => goTo(current + 1), 5000);
+})();
+
 // ===== NAVBAR SCROLL EFFECT =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
