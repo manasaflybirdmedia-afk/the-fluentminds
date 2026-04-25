@@ -186,6 +186,8 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   overflow: hidden;
+  /* Keep the hero readable even if the background image fails to load. */
+  background: linear-gradient(118deg, var(--navy) 0%, var(--navy-mid) 56%, #334f6d 100%);
 }
 
 /* HERO CONTAINER */
@@ -211,7 +213,17 @@ a { text-decoration: none; color: inherit; }
 
 /* Dark-left gradient overlay */
 .hero-bg-overlay {
-  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    92deg,
+    rgba(13, 27, 42, 0.84) 0%,
+    rgba(13, 27, 42, 0.66) 38%,
+    rgba(13, 27, 42, 0.28) 67%,
+    rgba(13, 27, 42, 0.08) 100%
+  );
 }
 
 /* Container */
@@ -295,6 +307,38 @@ a { text-decoration: none; color: inherit; }
 .btn.secondary:hover {
   background: rgba(255,255,255,.10);
   transform: translateY(-2px);
+}
+
+body.hero-media-fallback .hero-bg-img {
+  display: none;
+}
+
+body.hero-media-fallback .hero-bg-overlay {
+  background: linear-gradient(118deg, var(--navy) 0%, var(--navy-mid) 56%, #334f6d 100%);
+}
+
+body.about-media-fallback .about-img {
+  display: none;
+}
+
+body.about-media-fallback .about-img-wrap {
+  position: relative;
+  background: linear-gradient(145deg, #efe3c4 0%, #dcc495 100%);
+}
+
+body.about-media-fallback .about-img-wrap::after {
+  content: 'Classroom image unavailable';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 

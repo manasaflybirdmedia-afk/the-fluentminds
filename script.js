@@ -25,6 +25,27 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ===== IMAGE FALLBACKS =====
+const setupImageFallback = (selector, bodyClass) => {
+  const img = document.querySelector(selector);
+  if (!img) return;
+
+  const markMissing = () => {
+    document.body.classList.add(bodyClass);
+    img.style.display = 'none';
+  };
+
+  img.addEventListener('error', markMissing, { once: true });
+
+  // Covers cached broken images where `error` may not fire again.
+  if (img.complete && img.naturalWidth === 0) {
+    markMissing();
+  }
+};
+
+setupImageFallback('.hero-bg-img', 'hero-media-fallback');
+setupImageFallback('.about-img', 'about-media-fallback');
+
 // ===== SCROLL REVEAL ANIMATION =====
 const observerOptions = {
   threshold: 0.12,
