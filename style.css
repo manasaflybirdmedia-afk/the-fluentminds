@@ -750,6 +750,7 @@ body.about-media-fallback .about-img-wrap::after {
 @media (max-width: 768px) {
   .hero .container { padding-left: 24px; padding-right: 24px; }
   .hero-content { max-width: 100%; }
+  .hero h1 { font-size: 3.5rem; }
   .section { padding: 72px 0; }
 
   /* Nav */
@@ -795,7 +796,7 @@ body.about-media-fallback .about-img-wrap::after {
 
 @media (max-width: 480px) {
   .why-grid { grid-template-columns: 1fr; }
-  .hero-headline { font-size: 2.4rem; }
+  .hero h1 { font-size: 2.5rem; }
   .stats-row { flex-direction: column; gap: 20px; padding: 24px; }
   .stat-divider { width: 44px; height: 1px; }
   .about-img-wrap,
